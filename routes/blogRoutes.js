@@ -6,13 +6,14 @@ import {
   getBlogById,
   updateBlog,
 } from "../controllers/blogs/index.js";
+import { authorize, protect } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
-router.get("/", getAllBlogs);
-router.get("/:id", getBlogById);
-router.post("/", createBlog);
-router.put("/:id", updateBlog);
-router.delete("/:id", deleteBlog);
+router.get("/", protect, getAllBlogs);
+router.get("/:id", protect, getBlogById);
+router.post("/", protect, authorize("admin"), createBlog);
+router.put("/:id", protect, authorize("admin"), updateBlog);
+router.delete("/:id", protect, authorize("admin"), deleteBlog);
 
 export default router;

@@ -1,4 +1,3 @@
-// import { v4 as uuid4 } from "uuid";
 import Blog from "../../models/blogModel.js";
 
 export const createBlog = async (req, res) => {
@@ -12,16 +11,3 @@ export const createBlog = async (req, res) => {
 
   res.status(201).json(newBlog);
 };
-
-/*
-  const newBlog = {
-    id: uuid4(),
-    author,
-    date,
-    description,
-    title,
-  };
-
-  Blog.create(newBlog);
-
-*/
