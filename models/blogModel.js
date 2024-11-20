@@ -12,9 +12,10 @@ BlogSchema.post("save", async (doc) => {
   await Author.findByIdAndUpdate(doc.author, { $inc: { blogsCount: 1 } });
 });
 
-// TODO: fix
-BlogSchema.post("delete", async (doc) => {
-  await Author.findByIdAndUpdate(doc.author, { $inc: { blogsCount: -1 } });
+BlogSchema.post("findOneAndDelete", async (doc) => {
+  if (doc.author) {
+    await Author.findByIdAndUpdate(doc.author, { $inc: { blogsCount: -1 } });
+  }
 });
 
 const Blog = mongoose.model("Blog", BlogSchema);

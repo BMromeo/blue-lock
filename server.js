@@ -1,14 +1,9 @@
-/* eslint-disable no-undef */
 import mongoose from "mongoose";
 import app from "./app.js";
-import env from "dotenv";
-
-env.config();
-
-const PORT = process.env.PORT;
+import { MONGO_URI, PORT } from "./config/config.js";
 
 mongoose
-  .connect("mongodb://localhost:27017/blog_db")
+  .connect(MONGO_URI)
   .then(() => console.log("Base de datos conectada"))
   .catch((error) => console.log(error));
 
