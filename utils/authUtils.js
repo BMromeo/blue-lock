@@ -3,7 +3,7 @@ import { JWT_SECRET } from "../config/config.js";
 
 export const generateToken = (user) => {
   return jwt.sign(
-    { name: user.name, email: user.email, role: user.role },
+    { id: user._id, name: user.name, email: user.email, role: user.role },
     JWT_SECRET,
     {
       expiresIn: "1h",
