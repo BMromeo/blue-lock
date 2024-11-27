@@ -13,7 +13,7 @@ export const loginController = async (req, res) => {
 
     if (isMatch) {
       const token = await generateToken(user);
-      res.status(200).json({ name: user.name, email: user.email, token });
+      res.status(200).json({ token });
     } else {
       return res.status(401).json({ message: "email or password invalid." });
     }
