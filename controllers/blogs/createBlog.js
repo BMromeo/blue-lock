@@ -6,21 +6,13 @@ export const createBlog = async (req, res) => {
 
     const image = req?.files?.image;
 
-    if (!author || !title || !description || !createdDate) {
-      return res.status(400).json({ message: "All fields are required." });
-    }
-
-    if (!image?.mimetype?.startsWith("/image")) {
-      return res.status(400).json({ message: "File must be an image." });
-    }
-
     const newBlog = new Blog({
       title,
       description,
       createdDate,
       author,
-      image: image.data,
-      imageType: image.mimetype,
+      image: image?.data,
+      imageType: image?.mimetype,
     });
 
     await newBlog.save();
