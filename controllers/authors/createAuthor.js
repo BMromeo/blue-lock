@@ -1,13 +1,25 @@
 import Author from "../../models/authorModel.js";
 
 export const createAuthor = async (req, res) => {
-  const { name, email, birthDate, createdDate } = req.body;
+  try {
+    const { name, email, birthDate } = req.body;
 
-  if (!name || !email || !birthDate || !createdDate) {
-    return res.status(400).json({ message: "All fields are required" });
+    if (!name || !email || !birthDate) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const author = {
+      name,
+      email,
+      birthDate,
+      createdDate: new Date(),
+    };
+
+    const newAuthor = await Author.create(author);
+
+    res.status(201).json(newAuthor);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
   }
-
-  const newAuthor = await Author.create(req.body);
-
-  res.status(201).json(newAuthor);
 };
