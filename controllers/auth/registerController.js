@@ -1,5 +1,8 @@
 import User from "../../models/userModel.js";
-import { generateToken } from "../../utils/authUtils.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+} from "../../utils/authUtils.js";
 
 const roles = ["admin", "user"];
 
@@ -17,11 +20,15 @@ export const registerController = async (req, res) => {
     }
 
     const user = await User.create({ email, password, role });
-    const token = generateToken(user);
+    const accessToken = generateAccessToken(user);
+    const refreshToken = generateRefreshToken(user);
 
-    res
-      .status(201)
-      .json({ id: user._id, email: user.email, role: user.role, token });
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      sameSite: "strict", // Proteger contra CSRF
+    });
+
+    res.status(200).json({ accessToken });
   } catch (error) {
     console.log({ error });
     res.status(500).json({ message: "Server error" });
