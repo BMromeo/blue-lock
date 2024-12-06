@@ -1,5 +1,8 @@
 import User from "../../models/userModel.js";
-import { generateToken } from "../../utils/authUtils.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+} from "../../utils/authUtils.js";
 
 export const loginController = async (req, res) => {
   const { email, password } = req.body;
@@ -12,8 +15,16 @@ export const loginController = async (req, res) => {
     }
 
     if (isMatch) {
-      const token = await generateToken(user);
-      res.status(200).json({ token });
+      const accessToken = generateAccessToken(user);
+      const refreshToken = generateRefreshToken(user);
+
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        // secure: process.env.NODE_ENV === "production",
+        sameSite: "strict", // Proteger contra CSRF
+      });
+
+      res.status(200).json({ accessToken });
     } else {
       return res.status(401).json({ message: "email or password invalid." });
     }
