@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beautiful and dynamic page about the anime Blue Lock">
+    <title>Blue Lock Fan Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('https://i.imgur.com/5mGYJ4Z.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+        }
+
+        header, section, footer {
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+        }
+
+        #characters .character-buttons button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin: 5px;
+            padding: 10px 15px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        #characters .character-buttons button:hover {
+            background-color: #ffd700;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .character-details {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .character-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .character-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+        }
+
+        .character-card h3 {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            border: 5px solid #ffd700;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+        }
+
+        form label {
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        form input {
+            padding: 10px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        form button {
+            background-color: #ffd700;
+            color: #000;
+            font-size: 1.2rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Blue Lock</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#characters">Characters</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#join">Join Us</a></li>
+            </ul>
+        </nav>
+        <div class="header-content">
+            <h1>Welcome to the Blue Lock Universe</h1>
+            <p>Explore the story of ambition, rivalry, and the ultimate goal of becoming the world's best striker!</p>
+            <button id="explore-btn">Explore Now</button>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Blue Lock</h2>
+        <p>Blue Lock is a sports anime centered around the fierce world of football (soccer). It follows Yoichi Isagi and other talented players in their journey through the Blue Lock training program. Their goal? To become the ultimate striker who will lead Japan to World Cup glory.</p>
+        <p>The story delves into themes of ambition, teamwork, and self-discovery, making it a must-watch for fans of competitive sports and intense character development.</p>
+    </section>
+
+    <section id="characters">
+        <h2>Meet the Characters</h2>
+        <div class="character-buttons">
+            <button class="character-btn" data-character="yoichi">Yoichi Isagi</button>
+            <button class="character-btn" data-character="rin">Rin Itoshi</button>
+            <button class="character-btn" data-character="bachira">Meguru Bachira</button>
+            <button class="character-btn" data-character="nagi">Seishiro Nagi</button>
+            <button class="character-btn" data-character="barou">Shoei Barou</button>
+            <button class="character-btn" data-character="chigiri">Hyoma Chigiri</button>
+            <button class="character-btn" data-character="raichi">Jingo Raichi</button>
+            <button class="character-btn" data-character="shidou">Ryosuke Shidou</button>
+            <button class="character-btn" data-character="sae">Sae Itoshi</button>
+        </div>
+        <div id="character-details" class="character-details">
+            <h3>Select a character to see details</h3>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <img src="images/match.jpg" alt="Exciting match">
+            <img src="images/team.jpg" alt="Blue Lock team">
+            <img src="images/goal.jpg" alt="Scoring a goal">
+        </div>
+    </section>
+
+    <section id="join">
+        <h2>Join the Community</h2>
+        <p>Sign up to get updates about Blue Lock, exclusive content, and connect with fellow fans!</p>
+        <form id="signup-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Blue Lock Fan Page. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const characterDetails = {
+            yoichi: {
+                name: "Yoichi Isagi",
+                image: "https://i.pinimg.com/236x/c9/09/ed/c909ed27612b79475a6f82f7a038f874.jpg",
+                description: "The protagonist of Blue Lock, Yoichi is determined to find his true self and prove his worth as a striker. With a knack for analyzing the field, he evolves into a formidable player."
+            },
+            rin: {
+                name: "Rin Itoshi",
+                image: "https://i.redd.it/blue-lock-characters-with-theme-songs-v0-lvihwcgg18ya1.jpg?width=512&format=pjpg&auto=webp&s=f74b9b8e2ed9af25b94ff9bd6708d65ef350258f",
+                description: "A prodigy with unmatched skills, Rin Itoshi is laser-focused on being the best. His calm yet intense demeanor makes him a rival to all."
+            },
+            bachira: {
+                name: "Meguru Bachira",
+                image: "https://preview.redd.it/i-tried-using-ai-art-on-blue-lock-characters-v0-i6hg0rut8r5a1.jpg?width=736&format=pjpg&auto=webp&s=714731d082fd6fd2bcc7e340f0b34a3bbb45cf52",
+                description: "Known for his playful and unpredictable style, Meguru Bachira brings creativity and flair to the game, driven by his desire to play with the best."
+            },
+            nagi: {
+                name: "Seishiro Nagi",
+                image: "https://erikstore.com/blog/wp-content/uploads/2024/04/Seishiro_Nagi.jpg",
+                description: "A natural genius, Seishiro Nagi joined Blue Lock to test his unparalleled talent. His laid-back personality hides his immense potential."
+            },
+            barou: {
+                name: "Shoei Barou",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkopqgnoUtPmY-8rgKub0ur80VZUm4m3UCGZ8is35bk5zljdtiv2adWqZu49NtPvAzMik&usqp=CAU",
+                description: "Dubbed the 'King of the Field,' Shoei Barou’s dominating presence and prideful nature make him a force to be reckoned with."
+            },
+            chigiri: {
+                name: "Hyoma Chigiri",
+                image: "https://preview.redd.it/blue-lock-characters-with-theme-songs-v0-oaagjygv08ya1.jpg?width=640&crop=smart&auto=webp&s=4779a9a1f906771a7dbe5eabfe7d55c638374410",
+                description: "Hyoma Chigiri, known for his incredible speed, is a player who overcomes his fears to shine as a valuable asset to any team."
+            },
+            raichi: {
+                name: "Jingo Raichi",
+                image: "images/raichi.jpg",
+                description: "A fiery and aggressive midfielder, Jingo Raichi never holds back and always aims to dominate the field with his presence."
+            },
+            shidou: {
+                name: "Ryosuke Shidou",
+                image: "https://i.pinimg.com/736x/56/9a/9f/569a9f2efefb693a79d6c780c98056ba.jpg",
+                description: "Ryosuke Shidou is a wild card, known for his erratic behavior and jaw-dropping talent on the field. A striker with no limits."
+            },
+            sae: {
+                name: "Sae Itoshi",
+                image: "https://preview.redd.it/blue-lock-s2-ep-4-leaks-v0-9l59vhns7iwd1.jpg?width=360&format=pjpg&auto=webp&s=9440e4dd8c413ce77f9f6669469b60f9a984a5bb",
+                description: "Sae Itoshi, Rin’s older brother, is a world-class midfielder with unmatched skills, striving for perfection in every match."
+            }
+        };
+
+        document.querySelectorAll('.character-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const characterKey = button.dataset.character;
+                const character = characterDetails[characterKey];
+
+                document.getElementById('character-details').innerHTML = `
+                    <div class="character-card">
+                        <img src="${character.image}" alt="${character.name}">
+                        <div>
+                            <h3>${character.name}</h3>
+                            <p>${character.description}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
